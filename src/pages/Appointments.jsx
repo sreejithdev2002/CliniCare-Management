@@ -60,11 +60,6 @@ function Appointments() {
   };
 
   const handleDelete = (id) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this appointment?"
-    );
-    if (!confirmed) return;
-
     const updated = appointments.filter((appt) => appt.id !== id);
     setAppointments(updated);
     localStorage.setItem("CliniCareAppointments", JSON.stringify(updated));
@@ -87,23 +82,25 @@ function Appointments() {
   };
 
   const statusColors = {
-    Scheduled: "bg-yellow-100 text-yellow-800",
-    Completed: "bg-green-100 text-green-800",
-    Cancelled: "bg-red-100 text-red-800",
+    Scheduled:
+      "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100",
+    Completed:
+      "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100",
+    Cancelled: "bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100",
   };
 
   return (
-    <div>
+    <div className="h-screen bg-white dark:bg-gray-900">
       <Header />
       <div className="px-6 lg:px-40 mt-10">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl robotoFont">All Appointments</h2>
+          <h2 className="text-2xl robotoFont dark:text-white text-black">
+            All Appointments
+          </h2>
         </div>
 
-        {/* Filters */}
-        <div className="bg-white p-4 shadow-sm rounded-md mb-6">
+        <div className="bg-white dark:bg-gray-800 dark:text-gray-100 p-4 shadow-sm rounded-md mb-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Doctor Filter */}
             <div>
               <label className="block text-sm font-medium mb-1">
                 Filter by Doctor
@@ -112,7 +109,7 @@ function Appointments() {
                 name="doctor"
                 value={filters.doctor}
                 onChange={handleFilterChange}
-                className="w-full border border-gray-300 rounded px-2 py-2"
+                className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded px-2 py-2"
               >
                 <option value="All">All Doctors</option>
                 {doctorsData.map((doc, i) => (
@@ -123,7 +120,6 @@ function Appointments() {
               </select>
             </div>
 
-            {/* Status Filter */}
             <div>
               <label className="block text-sm font-medium mb-1">
                 Filter by Status
@@ -132,7 +128,7 @@ function Appointments() {
                 name="status"
                 value={filters.status}
                 onChange={handleFilterChange}
-                className="w-full border border-gray-300 rounded px-2 py-2"
+                className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded px-2 py-2"
               >
                 <option value="All">All Statuses</option>
                 <option value="Scheduled">Scheduled</option>
@@ -143,10 +139,9 @@ function Appointments() {
           </div>
         </div>
 
-        {/* Appointment Table */}
-        <div className="overflow-auto max-h-[45vh] md:max-h-[55vh] lg:max-h-[60vh] shadow-sm rounded-md border border-gray-200">
-          <table className="min-w-full bg-white">
-            <thead className="text-left text-sm text-gray-900">
+        <div className="overflow-auto max-h-[45vh] md:max-h-[55vh] lg:max-h-[60vh] shadow-sm rounded-md border border-gray-200 dark:border-gray-700">
+          <table className="min-w-full bg-white dark:bg-gray-800">
+            <thead className="text-left text-sm text-gray-900 dark:text-gray-200">
               <tr>
                 <th className="px-6 py-3">Date</th>
                 <th className="px-6 py-3">Time</th>
@@ -162,7 +157,7 @@ function Appointments() {
                 filteredAppointments.map((appt) => (
                   <tr
                     key={appt.id}
-                    className="border-t border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
+                    className="border-t border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
                     <td className="px-6 py-4 whitespace-nowrap">
                       {dayjs(appt.date).format("DD MMM YYYY")}
@@ -174,7 +169,7 @@ function Appointments() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       {appt.doctor}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-[#539765]">
+                    <td className="px-6 py-4 whitespace-nowrap text-[#539765] dark:text-green-500">
                       {appt.reason}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -190,13 +185,13 @@ function Appointments() {
                     <td className="px-6 py-4 whitespace-nowrap flex gap-2">
                       <button
                         onClick={() => handleEdit(appt)}
-                        className="text-blue-600 hover:underline text-sm"
+                        className="text-blue-600 dark:text-blue-500 hover:underline text-sm cursor-pointer"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(appt.id)}
-                        className="text-red-600 hover:underline text-sm"
+                        className="text-red-600 dark:text-red-500 hover:underline text-sm cursor-pointer"
                       >
                         Delete
                       </button>
@@ -218,7 +213,6 @@ function Appointments() {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <AppointmentFormModal
           date={dayjs(editingAppointment.date)}

@@ -9,10 +9,10 @@ import doctorsData from "../data/doctors.json";
 import dayjs from "dayjs";
 
 function Dashboard() {
-  const [selectedDate, setSelectedDate] = useState(null); // for modal
+  const [selectedDate, setSelectedDate] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
-  const [editingAppointment, setEditingAppointment] = useState(null); // for editing
+  const [editingAppointment, setEditingAppointment] = useState(null);
 
   const today = dayjs().format("YYYY-MM-DD");
 
@@ -51,14 +51,12 @@ function Dashboard() {
   };
 
   const handleDeleteAppointment = (id) => {
-    if (window.confirm("Are you sure you want to delete this appointment?")) {
-      const updatedAppointments = appointments.filter((appt) => appt.id !== id);
-      setAppointments(updatedAppointments);
-      localStorage.setItem(
-        "CliniCareAppointments",
-        JSON.stringify(updatedAppointments)
-      );
-    }
+    const updatedAppointments = appointments.filter((appt) => appt.id !== id);
+    setAppointments(updatedAppointments);
+    localStorage.setItem(
+      "CliniCareAppointments",
+      JSON.stringify(updatedAppointments)
+    );
   };
 
   const handleEditAppointment = (appt) => {
@@ -79,17 +77,21 @@ function Dashboard() {
     .sort((a, b) => a.time.localeCompare(b.time));
 
   const statusColors = {
-    Scheduled: "bg-yellow-100 text-yellow-800",
-    Completed: "bg-green-100 text-green-800",
-    Cancelled: "bg-red-100 text-red-800",
+    Scheduled:
+      "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100",
+    Completed:
+      "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100",
+    Cancelled: "bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100",
   };
 
   return (
-    <div>
+    <div className=" bg-white dark:bg-gray-900">
       <Header />
-      <div className="flex flex-col px-10 lg:px-40 my-10">
+      <div className="flex flex-col px-10 lg:px-40 mt-10 pb-10">
         <div className="flex justify-between items-center p-2">
-          <h2 className="text-2xl robotoFont">Calendar</h2>
+          <h2 className="text-2xl robotoFont dark:text-white text-black">
+            Calendar
+          </h2>
         </div>
 
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -108,13 +110,13 @@ function Dashboard() {
         )}
 
         <div className="mt-5 robotoFont">
-          <h2 className="text-2xl robotoFont mb-4">
+          <h2 className="text-2xl robotoFont mb-4 text-black dark:text-gray-100">
             Appointments for {dayjs().format("DD MMM YYYY")}
           </h2>
-          <div className="overflow-auto max-h-[40vh] md:max-h-[60vh] lg:max-h-[50vh] shadow-sm rounded-md border border-gray-200">
-            <table className="min-w-full bg-white">
+          <div className="overflow-auto max-h-[40vh] md:max-h-[60vh] lg:max-h-[50vh] shadow-sm rounded-md border border-gray-200 dark:border-gray-700">
+            <table className="min-w-full bg-white dark:bg-gray-800">
               <thead>
-                <tr className="text-left text-sm text-gray-900">
+                <tr className="text-left text-sm text-gray-900 dark:text-gray-200">
                   <th className="px-6 py-3">Time</th>
                   <th className="px-6 py-3">Patient</th>
                   <th className="px-6 py-3">Doctor</th>
@@ -128,7 +130,7 @@ function Dashboard() {
                   filteredAppointments.map((appointment, index) => (
                     <tr
                       key={appointment.id}
-                      className="border-t border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
+                      className="border-t border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
                     >
                       <td className="px-6 py-4 whitespace-nowrap">
                         {appointment.time}
@@ -139,7 +141,7 @@ function Dashboard() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         {appointment.doctor}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-[#539765]">
+                      <td className="px-6 py-4 whitespace-nowrap text-[#539765] dark:text-green-500">
                         {appointment.reason}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -154,13 +156,13 @@ function Dashboard() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap space-x-2">
                         <button
-                          className="text-blue-600 hover:underline cursor-pointer"
+                          className="text-blue-600 dark:text-blue-500 hover:underline text-sm cursor-pointer"
                           onClick={() => handleEditAppointment(appointment)}
                         >
                           Edit
                         </button>
                         <button
-                          className="text-red-600 hover:underline cursor-pointer"
+                          className="text-red-600 dark:text-red-500 hover:underline text-sm cursor-pointer"
                           onClick={() =>
                             handleDeleteAppointment(appointment.id)
                           }

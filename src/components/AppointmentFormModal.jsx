@@ -43,8 +43,8 @@ export default function AppointmentFormModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-[#539765]/30 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-md w-[90%] max-w-md">
+    <div className="fixed inset-0 bg-[#539765]/30 dark:bg-black/40 flex justify-center items-center z-50">
+      <div className="bg-white dark:bg-gray-900 dark:text-white p-6 rounded-lg shadow-md w-[90%] max-w-md transition-all duration-300">
         <h2 className="text-2xl font-bold mb-4 robotoFont">
           {initialData ? "Edit Appointment" : "New Appointment"} –{" "}
           {date.format("DD MMM YYYY")}
@@ -56,7 +56,7 @@ export default function AppointmentFormModal({
               name="patient"
               value={formData.patient}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded px-2 py-2 mt-1"
+              className="w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded px-2 py-2 mt-1"
               required
             >
               <option value="">Select Patient</option>
@@ -67,13 +67,14 @@ export default function AppointmentFormModal({
               ))}
             </select>
           </div>
+
           <div>
             <label className="block font-medium">Doctor</label>
             <select
               name="doctor"
               value={formData.doctor}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded px-2 py-2 mt-1"
+              className="w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded px-2 py-2 mt-1"
               required
             >
               <option value="">Select Doctor</option>
@@ -84,13 +85,14 @@ export default function AppointmentFormModal({
               ))}
             </select>
           </div>
+
           <div>
             <label className="block font-medium">Time</label>
             <select
               name="time"
               value={formData.time}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded px-2 py-2 mt-1"
+              className="w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded px-2 py-2 mt-1"
               required
             >
               <option value="">Select Time</option>
@@ -101,23 +103,25 @@ export default function AppointmentFormModal({
               ))}
             </select>
           </div>
+
           <div>
             <label className="block font-medium">Reason</label>
             <input
               name="reason"
               value={formData.reason}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded px-2 py-2 mt-1"
+              className="w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded px-2 py-2 mt-1"
               required
             />
           </div>
+
           <div>
             <label className="block font-medium">Status</label>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded px-2 py-2 mt-1"
+              className="w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded px-2 py-2 mt-1"
               required
             >
               <option value="Scheduled">Scheduled</option>
@@ -125,17 +129,18 @@ export default function AppointmentFormModal({
               <option value="Cancelled">Cancelled</option>
             </select>
           </div>
+
           <div className="flex justify-end gap-2 mt-4">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 hover:outline outline-gray-200 rounded cursor-pointer"
+              className="px-4 py-2 rounded cursor-pointer hover:outline dark:hover:outline-gray-600 outline-gray-200"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#539765] hover:bg-[#498459] text-white rounded cursor-pointer shadow-sm transition-colors duration-300"
+              className="px-4 py-2 bg-[#539765] hover:bg-[#498459] dark:bg-green-700 dark:hover:bg-green-800 text-white rounded cursor-pointer shadow-sm transition-colors duration-300"
             >
               {initialData ? "Update" : "Create"}
             </button>

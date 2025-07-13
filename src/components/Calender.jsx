@@ -45,11 +45,11 @@ const Calendar = ({ onDateSelect }) => {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto p-4">
+    <div className="w-full max-w-lg mx-auto p-4 text-black dark:text-white">
       <div className="flex items-center justify-between mb-4">
         <button
           onClick={goToPreviousMonth}
-          className="text-xl px-2 py-1 rounded hover:bg-[#e5ffeb]"
+          className="text-xl px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
         >
           <KeyboardArrowLeftOutlinedIcon />
         </button>
@@ -58,7 +58,7 @@ const Calendar = ({ onDateSelect }) => {
         </h2>
         <button
           onClick={goToNextMonth}
-          className="text-xl px-2 py-1 rounded hover:bg-[#e5ffeb]"
+          className="text-xl px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
         >
           <KeyboardArrowRightOutlinedIcon />
         </button>
@@ -66,10 +66,13 @@ const Calendar = ({ onDateSelect }) => {
 
       {/* Desktop Month View */}
       {!isMobile && (
-        <div className="border border-gray-200 p-5 rounded-xl">
+        <div className="border border-gray-200 dark:border-gray-700 p-5 rounded-xl bg-white dark:bg-gray-900">
           <div className="grid grid-cols-7 gap-2 mb-2">
             {["S", "M", "T", "W", "T", "F", "S"].map((day) => (
-              <div key={day} className="text-sm text-center font-medium">
+              <div
+                key={day}
+                className="text-sm text-center font-medium text-black dark:text-gray-200"
+              >
                 {day}
               </div>
             ))}
@@ -81,15 +84,18 @@ const Calendar = ({ onDateSelect }) => {
               const isPast = day?.isBefore(dayjs(), "day");
 
               let dayClass =
-                "h-10 border border-gray-200 rounded-lg flex items-start justify-start p-2 text-sm transition-colors duration-300 ";
+                "h-10 border rounded-lg flex items-start justify-start p-2 text-sm transition-colors duration-300 ";
+              dayClass += "border-gray-200 dark:border-gray-700 ";
 
               if (isToday) {
                 dayClass +=
-                  "bg-[#539765] text-white font-semibold hover:text-[#539765] hover:bg-white cursor-pointer";
+                  "bg-green-600 text-white font-semibold hover:bg-white hover:text-green-600 dark:bg-green-700 dark:hover:bg-gray-800 dark:hover:text-green-400 cursor-pointer";
               } else if (isPast) {
-                dayClass += "bg-gray-100 text-gray-400 cursor-not-allowed";
+                dayClass +=
+                  "bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500 cursor-not-allowed";
               } else {
-                dayClass += "hover:bg-[#e5ffeb] cursor-pointer";
+                dayClass +=
+                  "hover:bg-green-50 dark:hover:bg-gray-800 cursor-pointer";
               }
 
               return (
@@ -116,14 +122,17 @@ const Calendar = ({ onDateSelect }) => {
               const isPast = day.isBefore(dayjs(), "day");
 
               let dayClass =
-                "p-4 border border-gray-200 rounded cursor-pointer transition-colors duration-200 ";
+                "p-4 border rounded transition-colors duration-200 ";
+              dayClass += "border-gray-200 dark:border-gray-700 ";
 
               if (isToday) {
-                dayClass += "bg-[#539765] text-white hover:bg-[#6fad7a]";
+                dayClass += "bg-green-600 text-white hover:bg-green-700";
               } else if (isPast) {
-                dayClass += "bg-gray-100 text-gray-500 cursor-default";
+                dayClass +=
+                  "bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-500 cursor-default";
               } else {
-                dayClass += "hover:bg-blue-100";
+                dayClass +=
+                  "hover:bg-green-50 dark:hover:bg-gray-800 cursor-pointer";
               }
 
               return (
