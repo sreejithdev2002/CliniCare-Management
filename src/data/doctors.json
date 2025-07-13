@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "name": "Dr. Emma Watson",
+      "specialization": "Cardiologist"
+    },
+    {
+      "id": 2,
+      "name": "Dr. John Doe",
+      "specialization": "Dermatologist"
+    },
+    {
+      "id": 3,
+      "name": "Dr. Priya Kumar",
+      "specialization": "Pediatrician"
+    }
+  ]
+  
