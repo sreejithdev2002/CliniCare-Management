@@ -23,7 +23,12 @@ function Login() {
     <div className="flex dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="hidden lg:flex flex-col w-[40%]">
         <div className="h-[50vh]">
-          <img src={LoginImage} alt="" className="object-cover h-full w-full" />
+          <img
+            src={LoginImage}
+            loading="lazy"
+            alt=""
+            className="object-cover h-full w-full"
+          />
         </div>
         <div className="bg-[#539765] h-[50vh] p-10 text-white dark:bg-green-800">
           <h1 className="text-center text-4xl mb-5 robotoFont">CliniCare</h1>

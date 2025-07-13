@@ -45,6 +45,12 @@ Upon successful login, the user is redirected to the dashboard.
 
 ---
 
+## Live Preview
+
+https://clini-care-management.vercel.app
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites

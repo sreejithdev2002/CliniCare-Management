@@ -58,6 +58,7 @@ function Header() {
           </button>
           <img
             src={AvatarImage}
+            loading="lazy"
             alt="User"
             className="h-10 w-10 rounded-full object-cover shadow-xs"
           />
