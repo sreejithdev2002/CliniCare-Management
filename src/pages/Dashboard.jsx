@@ -85,7 +85,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="h-auto sm:h-screen md:h-auto 2xl:h-screen bg-white dark:bg-gray-900">
+    <div className="h-screen lg:h-screen bg-white dark:bg-gray-900">
       <Header />
       <div className="flex flex-col px-10 lg:px-40 mt-10 pb-10">
         <div className="flex justify-between items-center p-2">
