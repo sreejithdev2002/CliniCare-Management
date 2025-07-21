@@ -85,7 +85,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="h-[100dvh] lg:h-auto bg-white dark:bg-gray-900">
+    <div className="h-auto sm:h-screen md:h-auto 2xl:h-screen bg-white dark:bg-gray-900">
       <Header />
       <div className="flex flex-col px-10 lg:px-40 mt-10 pb-10">
         <div className="flex justify-between items-center p-2">
@@ -113,7 +113,7 @@ function Dashboard() {
           <h2 className="text-2xl robotoFont mb-4 text-black dark:text-gray-100">
             Appointments for {dayjs().format("DD MMM YYYY")}
           </h2>
-          <div className="overflow-auto max-h-[40vh] md:max-h-[60vh] lg:max-h-[50vh] shadow-sm rounded-md border border-gray-200 dark:border-gray-700">
+          <div className="overflow-auto max-h-[30vh] md:max-h-[60vh] lg:max-h-[50vh] shadow-sm rounded-md border border-gray-200 dark:border-gray-700">
             <table className="min-w-full bg-white dark:bg-gray-800">
               <thead>
                 <tr className="text-left text-sm text-gray-900 dark:text-gray-200">

@@ -90,7 +90,7 @@ function Appointments() {
   };
 
   return (
-    <div className="h-screen bg-white dark:bg-gray-900">
+    <div className="h-screen bg-white dark:bg-gray-900 sm:pb-10">
       <Header />
       <div className="px-6 lg:px-40 mt-10">
         <div className="flex justify-between items-center mb-6">
@@ -139,8 +139,8 @@ function Appointments() {
           </div>
         </div>
 
-        <div className="overflow-auto max-h-[45vh] md:max-h-[55vh] lg:max-h-[60vh] shadow-sm rounded-md border border-gray-200 dark:border-gray-700">
-          <table className="min-w-full bg-white dark:bg-gray-800">
+        <div className="overflow-auto max-h-[45vh] md:max-h-[50vh] lg:max-h-[60vh] shadow-sm rounded-md border border-gray-200 dark:border-gray-700">
+          <table className="min-w-full bg-white dark:bg-gray-800 ">
             <thead className="text-left text-sm text-gray-900 dark:text-gray-200">
               <tr>
                 <th className="px-6 py-3">Date</th>
